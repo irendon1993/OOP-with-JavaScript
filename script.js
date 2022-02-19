@@ -7,9 +7,9 @@ const Person = function (firstName, birthYear) {
   this.birthYear = birthYear;
 
   // Never create a function in a constructor function
-  this.calcAge = function () {
-    console.log(2037 - birthYear);
-  };
+  //   this.calcAge = function () {
+  //     console.log(2037 - birthYear);
+  //   };
 };
 
 const jonas = new Person('Jonas', 1991);
@@ -19,3 +19,13 @@ console.log(jonas);
 // 2. function is called, this = {}
 // 3. {} linked to prototype
 // 4. function automatically returns {}
+
+// Prototypes
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+jonas.calcAge();
+
+console.log(jonas.__proto__);
+console.log(jonas.__proto__.__proto__);
